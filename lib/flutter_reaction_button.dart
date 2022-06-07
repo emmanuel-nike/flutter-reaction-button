@@ -1,4 +1,4 @@
-library flutter_react_button;
+library flutter_reaction_button;
 
 export 'src/models/reaction.dart';
 export 'src/ui/reaction_button.dart';
