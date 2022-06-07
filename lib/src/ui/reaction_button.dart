@@ -9,6 +9,9 @@ class ReactionButton<T> extends StatefulWidget {
   /// This triggers when reaction button value changed.
   final void Function(T?) onReactionChanged;
 
+  /// This triggers when reaction button value changed.
+  final void Function() onTap;
+
   /// Default reaction button widget
   final Reaction<T>? initialReaction;
 
@@ -45,6 +48,7 @@ class ReactionButton<T> extends StatefulWidget {
     Key? key,
     required this.onReactionChanged,
     required this.reactions,
+    required this.onTap,
     this.initialReaction,
     this.boxPosition = Position.TOP,
     this.boxColor = Colors.white,
@@ -86,7 +90,8 @@ class _ReactionButtonState<T> extends State<ReactionButton<T>> {
   Widget build(BuildContext context) {
     return InkWell(
       key: _buttonKey,
-      onTap: _showReactionsBox,
+      onTap: widget.onTap,
+      onLongPress: _showReactionsBox,
       child: (_selectedReaction ?? widget.reactions[0]).icon,
     );
   }
